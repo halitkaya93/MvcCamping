@@ -1,0 +1,79 @@
+3. Video
+Katmanlı mimari temelde 3 katmandan oluşmaktadır. Bu katmanlar genellik her projenizde olması gereken katmanlardır. 
+( Sunum - İş - Veri ) Geliştirici bu 3 katmandan daha fazla bir katmanlı yapıda oluşturabilir bu yapıya çok katmanlı mimari denilmektedir. 
+
+1. Sunum Katmanı (Presentation Layer) : Kullanıcı ile etkileşimin yapıldığı katmandır. 
+Burada temel amaç kullanıcıya verileri göstermek ve kullanıcıdan gelen verileri Business Katmanı ile Data Access’e iletmektir.
+2. İş Katmanı (Business Layer) : Data Access  tarafında projeye çekilmiş olan veriler bu katmanda işlenir. 
+Kullanıcıdan gelen veriler önce Business katmanına gider oradan da işlenerek Data Access katmanına aktarılır. 
+Bu katmanda ayrıca bu verilere kimlerin erişeceğini belirtiyoruz. 
+3. Veri Katmanı (Data Access Layer) : Bu katmanda ekleme (Create), okuma (Read), güncelleme (Update) ve silme (Delete) gibi veritabanı işlemleri yapılmaktadır. 
+Bu dört temel işlem CRUD olarak ifade edilir.
+4. Entity Layer : 
+Veri tabanındaki tabloların ve içerisindeki sütunların tanımlanacağı ve bunların C# üzerinde class ve properties (özellikler) olarak ifade edileceği yapıların tutulduğu kısımdır.
+
+Bu dört katmanı projemize ekleyelim. Eklenen her katman yeni bir proje ögesi olarak karşımıza gelecektir.
+
+Solution alanına sağ tık > Add > New Project > Visual C# > Class Library (.NET Framework) adımlarını seçerek EntityLayer - DataAccessLayer - BusinessLayer katmanlarını sırasıyla oluşturalım. 
+Oluşturduğumuz proje katmanları otomatik olarak "class1" isimin de bir class ile birlikte gelir. Biz bu class1 sınıfını silip kendi sınıflarımızı oluşturacağız.
+
+Projeyi ilk oluşturduğumuzda karşımıza çıkan ilk katman aslında bizim Sunum Katmanımıza karşılık geliyor. 
+Bu nedenle başlangıçta projeyi adlandırırken sonuna UI eklemek mantıklı bir yaklaşım olacaktır.
+
+4. Video 
+Entity katmanında oluşturacağımız tabloları ve onların özelliklerini belirtiyoruz.
+
+Heading (Başlık) / Content (İçerik) / Writer (Yazar) / Contact (İletişim) / About (Hakkında) / Category (Kategori) 
+
+EntityLayer sağ tık > Add > New Folder  diyerek "Concrete" isimli yeni bir klasör oluşturuyoruz. 
+Bu klasörde SOMUT olarak tutulan ifadeler yer alacaktır. SOYUT olarak tutulan ifadeleri de ilerleyen adımlarda "Abstract" isimli klasör de tutacağız.
+
+Concrete klasörüne sırası ile Heading / Content / Writer / Contact / About / Category sınıflarını ekliyoruz. 
+Eklediğimiz sınıfların erişim belirleyicilerini (Access Modifiers) "public" yapmalıyız ki diğer alanlardan da erişim sağlanabilsin. 
+
+Sırada oluşturduğumuz her sınıfın (properties) özelliklerini eklemek kaldı. prop yazıp tabx2 yaptığımızda properties formu otomatik olarak gelecektir.
+
+
+8. Video
+Attribute (nitekliler)
+
+Bellekte fazla alan kaplamaması için [stringLengt()] kullanıldı
+
+9. Video
+Add Reference yapabilmek için ilgili projenin Reference bölümüne sağ tık >Add Reference>Projects>EntityLayer
+public DbSet<About> Abouts { get; set; }    //About benim projemin içinde yer alan sınıfın ismi, Abouts ise SQL de tablomuza yansıyacak ismi.
+
+10. Video WebConfig Ayarı
+<connectionStrings>
+		<add name="Context" connectionString="data source=SERVER ADI; initial catalog=DataBase İçin Seçilecek İsim; integrated security=true;" providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+
+11. Video
+Migration ve Veri Tabanı Oluşturma
+View > Other Windows > Package Manager Console (Default Project=DataAccessLayer)
+Consola enable-migrations yazılıp enter yapılır.
+public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+        }
+ibaresini true olarak düzeltiriz.
+
+Package Manager Console > update-database > eğer hata alırsan hataları düzelterek tekrar update-database
+database sonradan ilişkisel bir ekleme yapmak için;
+Package Manager Console (Default Project=DataAccessLayer)> add-migration mig1 > yeni eklentilerin neler olduğunu eklenen migration sınıfından kontrol ettikten sonra;
+Package Manager Console > update-database
+
+
+Video 15.
+Dry yapısı araştır;
+DRY (DONT REPEAT YOURSELF) Yazılım kalıplarının tekrarlanmasını (code duplucation) ve buna bağlı olarak ortaya çıkabilecek,
+fazlalıkların/karmıaşanın önlenmesini amaçlayanbir yazılım geliştirme ilkesidir.
+
+
+
+
+
+
+
+
+
