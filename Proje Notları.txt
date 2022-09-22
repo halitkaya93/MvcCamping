@@ -69,11 +69,57 @@ Dry yapısı araştır;
 DRY (DONT REPEAT YOURSELF) Yazılım kalıplarının tekrarlanmasını (code duplucation) ve buna bağlı olarak ortaya çıkabilecek,
 fazlalıkların/karmıaşanın önlenmesini amaçlayanbir yazılım geliştirme ilkesidir.
 
+Video 18.
+
+ctor kısayolu oluşturduğumuz sınıfın aynı isminde bir method oluşturur. Bu methodun türü contructer methodudur.
+
+***** Araştırma ödevi HttpGet ve HttpPost Attributeleri c#
+Video 26.
+Ctrl K D Komut bloğunu düzenliyor.
+
+Video 27.
+Projeyi böl parçala yönet prensibi çerçevesinde SOLİD e daha uygun sınıflar ve bu sınıfların çıplak kalmaması için,
+birer interface tanımlayalım. Projeye olan hakimiyet artsın, Her sınıf ya da her method sadece kendisine verilen görevi gerçekleştirsin,
+bütün bunlar SOLİD e uygunluğu gösterecektir.
+
+BussinessLayer içine Abstract klasörü oluşturuyoruz.
+Abstract klasörüne interface eklemeleri yapıyoruz.
+
+Video 28.
+**** ARAŞTIRMA ÖDEVİ dependency injection
+
+SINIF isminin üstüne gelip Ctrl+. Yaptığımızda "Generate Constructor.." ı tıkladığımızıda hazır şekilde Generate method oluşturulur.
+
+
+*****Dependency injection kaba tabir ile bir sınıfın/nesnenin bağımlılıklardan kurtulmasını amaçlayan ve o nesneyi
+ olabildiğince bağımsızlaştıran bir programlama tekniği/prensibidir.
+
+
+Video 30. 
+Fluent Validation 
+Doğrulama Kuralları;
+BusinessLayer'a ValidationRules isminde bir klasör oluşturuyoruz.
+Category için gerekli olan doğrulama kurallarını yazmak için ValidationRules içine CategoryValidatior class ı oluşturduk.
+AbstractValidator sınıfından miras aldırma işlemi uyguladık;
+public class CategoryValidatior : AbstractValidator<Category>
+    {
+        public CategoryValidatior()
+        {
+            RuleFor(x=>x.CategoryName).-->Burada "."Dan sonra doğrulama kuralları eklenir.
+        }
+    }
+
+
+Video 32.
+hata mesajı ile ilgili eklentiler neden View de değilde Backend tarafında ayarlandı araştırılacak?
+
+Video 33.
+Admin tema sayfası ayarlandı
+
+video 34. burada kaldık
 
 
 
-
-
-
+Video 40. derste kaldık
 
 

@@ -15,6 +15,7 @@ namespace DataAccessLayer.Abstract
         List<T> List();
 
         void Insert(T p);   //T den p (parametre) al
+        T Get(Expression<Func<T, bool>> filter);    //Get isimli bir method tanımladık, türü T. Dışarıdan bir şart alacak ama o belli değil şuan
         void Delete(T p);
         void Update(T p);
 

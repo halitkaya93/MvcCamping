@@ -24,6 +24,11 @@ namespace DataAccessLayer.Concrete.Repositories
             c.SaveChanges();
         }
 
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter); //Bir dizi veya listede sadece 1 DEĞER DÖNDÜRMEK İÇİN SingleOrDefault kullanırız
+        }                                           //Böylece GenericRepository den miras alan bütün sınıflarda da bu sınıf geçerli olacak.
+
         public void Insert(T p)
         {
             _object.Add(p);
